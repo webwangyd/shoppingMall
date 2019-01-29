@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalabale=no">
+    <title>koa_e_business</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1005957_gaezwd9umev.css">
+  </head>
+  <style>
+  </style>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script>
+    let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    //得到html的Dom元素
+    let htmlDom = document.getElementsByTagName('html')[0];
+    //设置根元素字体大小
+    if(htmlWidth>750){htmlWidth=750}
+    htmlDom.style.fontSize= htmlWidth/20 + 'px';
+  </script>
+</html>
