@@ -9,7 +9,7 @@
                     <input type="text" class="search-input" placeholder="查找">
                 </van-col>
                 <van-col span='5' class='search-btn'>
-                    <van-button size="mini">查找1</van-button>
+                    <van-button size="mini">查找</van-button>
                 </van-col>
             </van-row>
         </div>
