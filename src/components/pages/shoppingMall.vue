@@ -16,25 +16,52 @@
         <div class="swiper-area">
             <van-swipe :autoplay="1000">
                 <van-swipe-item v-for="(banner,index) in bannerPicArray" :key="index">
-                    <img :src="banner.imageUrl" width="100%"/>
+                    <img :src="banner.image" width="100%"/>
                 </van-swipe-item>
             </van-swipe>
+        </div>
+        <!--type-bar-->
+        <div class="type-bar">
+          <div v-for="(cate,index) in category" :key="index">
+            <img v-lazy="cate.image" width="90%"/>
+            <span>{{cate.mallCategoryName}}</span>
+          </div>
+        </div>
+        <!-- adbanner -->
+        <div>
+          <img v-lazy="adBanner" width="100%"/>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         data() {
             return {
                 msg: 'shopping Mall',
-                bannerPicArray:[
-                    {imageUrl:require('@/assets/shoppingmallSwipper1.png')},
-                    {imageUrl:require('@/assets/shoppingmallSwipper2.png')},
-                    {imageUrl:require('@/assets/shoppingmallSwipper3.png')}
-                ]
+                bannerPicArray:[],
+                category:[],
+                adBanner:''
             }
         },
+        created(){
+          axios({
+            url:"https://www.easy-mock.com/mock/5c6ab2b0d8bc8b31033c3605/shoppingMall/index",
+            method:"get"
+          })
+          .then(response => {
+            console.log(response);
+            if(response.status == 200){
+              this.category = response.data.data.category;
+              this.adBanner = response.data.data.advertesPicture.PICTURE_ADDRESS;
+              this.bannerPicArray = response.data.data.slides;
+            }
+          })
+          .catch(error => {
+            console.log(error)
+          })
+        }
     }
 </script>
 
@@ -66,8 +93,21 @@
 }
 .swiper-area{
     clear: both;
-    height: 12rem;
+    height: 9rem;
     overflow: hidden;
 }
-
+.type-bar{
+  background-color: #fff;
+  margin: 0 .2rem .2rem .2rem;
+  font-size: 14px;
+  border-radius: .3rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.type-bar div{
+  padding: .3rem;
+  font-size: 12px;
+  text-align: center;
+}
 </style>
