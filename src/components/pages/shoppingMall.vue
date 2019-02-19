@@ -31,18 +31,55 @@
         <div>
           <img v-lazy="adBanner" width="100%"/>
         </div>
+        <!--Recommend goods area-->
+        <div class="recommend-area">
+            <div class="recommend-title">
+                商品推荐
+            </div>
+            <div class="recommend-body">
+              <!--swiper-->
+              <swiper :options="swiperOption">
+                  <swiper-slide v-for=" (item ,index) in recommendGoods" :key="index">
+                      <div class="recommend-item">
+                              <img :src="item.image" width="80%" />
+                              <div>{{item.goodsName}}</div>
+                              <div>￥{{item.price}} (￥{{item.mallPrice}})</div>
+                      </div>
+                  </swiper-slide>
+              </swiper>
+            </div>
+        </div>
+        <!--floor one area-->
+        <floor-component :floorData = "floor1"></floor-component> 
     </div>
 </template>
 
 <script>
     import axios from 'axios'
+    import 'swiper/dist/css/swiper.css'
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
+    import floorComponent from '../component/floorComponent'
     export default {
+        components: {
+          swiper,
+          swiperSlide,
+          floorComponent
+        },
         data() {
             return {
-                msg: 'shopping Mall',
-                bannerPicArray:[],
-                category:[],
-                adBanner:''
+              swiperOption:{
+                slidesPerView:3
+              },
+              msg: 'shopping Mall',
+              bannerPicArray:[],
+              category:[],
+              adBanner:'',
+              recommendGoods:[],
+              floor1:[],
+              floor1_0:{},
+              floor1_1:{},
+              floor1_2:{}
+
             }
         },
         created(){
@@ -56,6 +93,8 @@
               this.category = response.data.data.category;
               this.adBanner = response.data.data.advertesPicture.PICTURE_ADDRESS;
               this.bannerPicArray = response.data.data.slides;
+              this.recommendGoods = response.data.data.recommend;
+              this.floor1 = response.data.data.floor1;            //楼层1数据
             }
           })
           .catch(error => {
@@ -107,6 +146,25 @@
 }
 .type-bar div{
   padding: .3rem;
+  font-size: 12px;
+  text-align: center;
+}
+.recommend-area{
+  background-color: #fff;
+  margin-top: .3rem;
+}
+.recommend-title{
+  border-bottom:1px solid #eee;
+  font-size:14px;
+  padding:.2rem;
+  color:#e5017d;
+}
+.recommend-body{
+  border-bottom: 1px solid #eee;
+  }
+.recommend-item{
+  width:99%;
+  border-right: 1px solid #eee;
   font-size: 12px;
   text-align: center;
 }
