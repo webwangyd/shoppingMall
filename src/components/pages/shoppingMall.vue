@@ -9,11 +9,7 @@
                     <input type="text" class="search-input" placeholder="查找">
                 </van-col>
                 <van-col span='5' class='search-btn'>
-<<<<<<< HEAD
-                    <van-button size="mini">查找2</van-button>
-=======
                     <van-button size="mini">查找</van-button>
->>>>>>> 39c5a45745b4628a1601e71bbf9d85dee2dfa7bd
                 </van-col>
             </van-row>
         </div>
