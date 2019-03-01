@@ -19,6 +19,14 @@ app.use(router.allowedMethods())
 ;(async () =>{
   await connect()
   initSchemas()
+  // const User = mongoose.model('User')
+  // let newUser = new User({userName:'webwangyd',password:'123456'})
+  // newUser.save().then(res=>{
+  //   console.log('新建用户成功')
+  // }).catch((err)=>{
+  //   console.log('新建用户失败')
+  //   console.log(err)
+  // })
 })()
 app.use(async(ctx) => {
   ctx.body = '<h1>hello webwangd</h1>'
