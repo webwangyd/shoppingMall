@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const {connect,initSchemas} = require('./database/init.js')
 const Router = require('koa-router')
 let user = require('./appApi/User.js')
+let goods = require('./appApi/Goods.js')
 //解决跨域
 const cors = require('koa2-cors')
 app.use(cors())
@@ -13,6 +14,7 @@ app.use(bodyParser())
 //装载所有子路由
 let router = new Router()
 router.use('/user',user.routes())
+router.use('/goods',goods.routes())
 //加载路由中间件
 app.use(router.routes())
 app.use(router.allowedMethods())
