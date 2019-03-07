@@ -4,6 +4,7 @@ import shoppingMall from '@/components/pages/shoppingMall'
 import Register from '@/components/pages/register'
 import Login from '@/components/pages/login'
 import Goods from '@/components/pages/goods'
+import Category from '@/components/pages/category'
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +28,11 @@ export default new Router({
       path: '/goods',
       name: 'goods',
       component: Goods
+    },
+    {
+      path: '/category',
+      name: 'category',
+      component: Category
     }
   ]
 })

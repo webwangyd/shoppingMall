@@ -4,7 +4,8 @@ const url = {
     getShoppingMallData : BASEURL + 'index',
     registerUser : LOCALURL + 'user/registry',
     loginUser : LOCALURL + 'user/login',
-    getDetailGoodsInfo: LOCALURL + 'goods/getDetailGoodsInfo'
+    getDetailGoodsInfo: LOCALURL + 'goods/getDetailGoodsInfo',
+    getCategoryList:LOCALURL + 'goods/getCategoryList'
 
 }
 module.exports = url;
