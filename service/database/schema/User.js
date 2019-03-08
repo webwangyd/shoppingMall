@@ -1,3 +1,4 @@
+//mongoose建立注册用户的数据模型
 const mogoose = require("mongoose")
 const Schema = mogoose.Schema
 let ObjectId = Schema.Types.ObjectId
