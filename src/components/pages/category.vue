@@ -25,11 +25,11 @@
                     :finished="finished"
                     @load="onLoad"
                     >
-                      <div class="list-item" v-for="(item,index) in goodList" :key="index">
-                        <div class="list-item-img"><img :src="item.IMAGE1" width="100%"/></div>
+                      <div class="list-item" @click="goGoodsInfo(item.ID)" v-for="(item,index) in goodList" :key="index">
+                        <div class="list-item-img"><img :src="item.IMAGE1" width="100%" :onerror= "errorImg"/></div>
                         <div class="list-item-text">
                             <div>{{item.NAME}}</div>
-                            <div class="">￥{{item.ORI_PRICE}}</div>
+                            <div class="">￥{{item.ORI_PRICE | moneyFilter}}</div>
                         </div>
                     </div>
                 </van-list>
@@ -43,6 +43,7 @@
 <script>
     import axios from 'axios'
     import url from '@/serviceAPI.config.js'
+    import {toMoney} from '@/filter/moneyFilter.js'
     import { Toast } from 'vant'
     export default {
         data() {
@@ -56,7 +57,13 @@
             categorySubId:'', //商品子分类ID
             loading:false,   //上拉加载使用
             finished:false,   //下拉加载是否没有数据了
-            isRefresh:false  //下拉加载
+            isRefresh:false,  //下拉加载
+            errorImg:'src="'+require('@/assets/errorimg.png')+'"'
+          }
+        },
+        filters:{
+          moneyFilter(money){
+            return toMoney(money)
           }
         },
         created(){
@@ -131,7 +138,8 @@
               let timer = setTimeout(() => {
                   this.isRefresh = false;
                   this.finished = false;
-                  this.list=[];
+                  this.goodList=[];
+                  this.page = 1;
                   this.onLoad()
               }, 500);
           },
@@ -168,6 +176,9 @@
               this.finished = false
               this.page=1
               this.onLoad()
+          },
+          goGoodsInfo(goodId){
+            this.$router.push({name:"goods",params:{goodsId:goodId}})
           }
         }
     }

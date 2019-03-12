@@ -14,7 +14,7 @@
         <div class="goods-name">{{goodsInfo.NAME}}</div>
         <div class="goods-price">￥价格：{{goodsInfo.PRESENT_PRICE | moneyFilter}}元</div>
         <div class="goods-detail">
-            <van-tabs swipeable="true" sticky="true">
+            <van-tabs :swipeable = "true" :sticky= "true">
                 <van-tab title="商品详情">
                     <div class="detail" v-html="goodsInfo.DETAIL">
                      </div>
@@ -48,7 +48,7 @@
             }
         },
         created(){
-            this.goodsId = this.$route.query.goodsId
+            this.goodsId = this.$route.query.goodsId ? this.$route.query.goodsId : this.$route.params.goodsId
             this.getInfo()
         },
         filters:{
