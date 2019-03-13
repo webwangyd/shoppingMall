@@ -3,8 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {PullRefresh,Tab,Tabs,Button,Row,Col,Swipe, SwipeItem,Lazyload,List,Field,NavBar} from 'vant'
-Vue.use(PullRefresh).use(Tab).use(Tabs).use(Field).use(NavBar).use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List)
+import {Tabbar,TabbarItem,PullRefresh,Stepper,Tab,Tabs,Button,Row,Col,Swipe, SwipeItem,Lazyload,List,Field,NavBar} from 'vant'
+Vue.use(Tabbar).use(TabbarItem).use(PullRefresh).use(Stepper).use(Tab).use(Tabs).use(Field).use(NavBar).use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List)
 // import Vant from 'vant'
 // import 'vant/lib/index.css'
 // Vue.use(Vant)
